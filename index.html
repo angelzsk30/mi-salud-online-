@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiSalud en Línea - Rediseño</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="material-icons">local_hospital</span>
+                <h1>MiSalud en Línea</h1>
+            </div>
+            <div class="user-info">
+                <span class="material-icons">account_circle</span>
+                <span>Angel Orellana</span>
+            </div>
+        </div>
+    </header>
+    
+    <main class="main-container">
+        <!-- Sección Dashboard/Home -->
+        <section id="home" class="section active">
+            <div class="breadcrumb">
+                <span class="material-icons">home</span>
+                <span>Inicio</span>
+            </div>
+            <br>
+            <div class="dashboard-grid">
+                <!-- Acciones Rápidas -->
+                <div class="card quick-actions">
+                    <h2>Acciones Rápidas</h2>
+                    <div class="action-buttons">
+                        <button class="btn-primary" onclick="showSection('citas')">
+                            <span class="material-icons">event</span>
+                            Nueva Cita
+                        </button>
+                        <button class="btn-secondary" onclick="showSection('resultados')">
+                            <span class="material-icons">assignment</span>
+                            Ver Resultados
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Próxima Cita -->
+                <div class="card">
+                    <h2>Próxima Cita</h2>
+                    <div class="appointment-info">
+                        <div class="appointment-item">
+                            <span class="material-icons">person</span>
+                            <div>
+                                <strong>Dr. María González</strong>
+                                <p>Cardiología</p>
+                            </div>
+                        </div>
+                        <div class="appointment-item">
+                            <span class="material-icons">schedule</span>
+                            <span>11 de julio, 2025 - 10:30 AM</span>
+                        </div>
+                        <button class="btn-primary" style="margin-top: 16px;">Ver Detalles</button>
+                    </div>
+                </div>
+                
+                <!-- Resumen de Salud -->
+                <div class="card">
+                    <h2>Resumen de Salud</h2>
+                    <div class="health-summary">
+                        <div class="health-item">
+                            <span class="label">Presión Arterial</span>
+                            <span class="value normal">Normal</span>
+                        </div>
+                        <div class="health-item">
+                            <span class="label">Peso</span>
+                            <span class="value">75 kg</span>
+                        </div>
+                        <div class="health-item">
+                            <span class="label">Última Consulta</span>
+                            <span class="value">hace 2 semanas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Actividad Reciente -->
+            <div class="card">
+                <h2>Actividad Reciente</h2>
+                <div class="activity-item">
+                    <span class="material-icons">assignment</span>
+                    <div class="content">
+                        <div class="title">Resultados de laboratorio disponibles</div>
+                        <div class="date">hace 3 días</div>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <span class="material-icons">medication</span>
+                    <div class="content">
+                        <div class="title">Recordatorio: Tomar medicamento</div>
+                        <div class="date">hace 1 día</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección Citas -->
+        <section id="citas" class="section">
+            <div class="breadcrumb">
+                <button class="back-button" onclick="showSection('home')">
+                    <span class="material-icons">arrow_back</span>
+                </button>
+                <span class="material-icons">event</span>
+                <span>Gestión de Citas</span>
+            </div>
+            <div class="card">
+                <h2>Agendar Nueva Cita</h2>
+                <form id="citaForm">
+                    <div class="form-group">
+                        <label class="form-label">Especialidad</label>
+                        <select class="form-select" name="especialidad" required>
+                            <option value="">Seleccionar especialidad</option>
+                            <option value="cardiologia">Cardiología</option>
+                            <option value="dermatologia">Dermatología</option>
+                            <option value="medicina-general">Medicina General</option>
+                            <option value="neurologia">Neurología</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Fecha Preferida</label>
+                        <input type="date" class="form-input" name="fecha" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Motivo de la Consulta</label>
+                        <textarea class="form-textarea" name="motivo" placeholder="Describe brevemente el motivo de tu consulta" maxlength="500" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Agendar Cita</button>
+                </form>
+                <div id="citaMessage" style="display: none; margin-top: 16px; padding: 12px; border-radius: 8px;"></div>
+            </div>
+        </section>
+        
+        <!-- Sección Resultados -->
+        <section id="resultados" class="section">
+            <div class="breadcrumb">
+                <button class="back-button" onclick="showSection('home')">
+                    <span class="material-icons">arrow_back</span>
+                </button>
+                <span class="material-icons">assignment</span>
+                <span>Resultados Médicos</span>
+            </div>
+            <div class="card">
+                <div class="result-item">
+                    <div class="result-info">
+                        <h3>Análisis de Sangre</h3>
+                        <div class="date">Fecha: 8 de julio, 2025</div>
+                    </div>
+                    <div>
+                        <span class="status-badge status-completed">Completo</span>
+                        <button class="btn-primary" style="margin-left: 12px;">Ver Detalle</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="result-item">
+                    <div class="result-info">
+                        <h3>Radiografía de Tórax</h3>
+                        <div class="date">Fecha: 12 de Julio, 2025</div>
+                    </div>
+                    <div>
+                        <span class="status-badge status-pending">Pendiente</span>
+                        <button class="btn-primary" style="margin-left: 12px; opacity: 0.6;" disabled>Procesando</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Navegación Inferior -->
+    <nav class="bottom-nav">
+        <div class="nav-container">
+            <button class="nav-item active" onclick="showSection('home')">
+                <span class="material-icons">home</span>
+                <span>Inicio</span>
+            </button>
+            <button class="nav-item" onclick="showSection('citas')">
+                <span class="material-icons">event</span>
+                <span>Citas</span>
+            </button>
+            <button class="nav-item" onclick="showSection('resultados')">
+                <span class="material-icons">assignment</span>
+                <span>Resultados</span>
+            </button>
+            <button class="nav-item">
+                <span class="material-icons">person</span>
+                <span>Perfil</span>
+            </button>
+        </div>
+    </nav>
+    
+    <script src="script.js"></script>
+</body>
+</html>
